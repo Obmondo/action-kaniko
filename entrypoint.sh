@@ -5,6 +5,8 @@ if [[ "$INPUT_DEBUG" == "true" ]]; then
 fi
 
 export REGISTRY='harbor.obmondo.com'
+
+echo $REGISTRY
 export IMAGE=${INPUT_IMAGE}
 export BRANCH=$(echo ${GITHUB_REF} | sed -E "s/refs\/(heads|tags)\///g" | sed -e "s/\//-/g")
 export TAG=${INPUT_TAG:-$([ "$BRANCH" == "master" ] && echo latest || echo $BRANCH)}
