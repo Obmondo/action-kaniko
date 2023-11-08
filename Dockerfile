@@ -4,8 +4,6 @@ RUN apk --update add ca-certificates bash
 
 FROM gcr.io/kaniko-project/executor:v1.9.1-debug
 
-SHELL ["/bin/bash", "-c"]
-
 RUN wget -O /kaniko/jq \
     https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && \
     chmod +x /kaniko/jq && \
