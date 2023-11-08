@@ -51,7 +51,7 @@ fi
 if [ "$REGISTRY" == "docker.io" ]; then
     export REGISTRY="index.${REGISTRY}/v1/"
 else
-    export IMAGE="$REGISTRY/$IMAGE"
+    export IMAGE="harbor.obmondo.com/$IMAGE"
 
     if [ ! -z $IMAGE_LATEST ]; then
         export IMAGE_LATEST="$REGISTRY/$IMAGE_LATEST"
