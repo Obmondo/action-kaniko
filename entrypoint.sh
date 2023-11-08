@@ -1,7 +1,7 @@
 #!/busybox/sh
-set -e pipefail
+set -eou pipefail
 if [[ "$INPUT_DEBUG" == "true" ]]; then
-    set -o xtrace
+    set -x
 fi
 
 export REGISTRY='harbor.obmondo.com'
