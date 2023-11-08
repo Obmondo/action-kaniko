@@ -1,4 +1,4 @@
-#!/busybox/sh
+#!/bin/bash
 set -eou pipefail
 if [[ "$INPUT_DEBUG" == "true" ]]; then
     set -x
