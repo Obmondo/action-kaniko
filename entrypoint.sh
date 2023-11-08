@@ -4,7 +4,7 @@ if [[ "$INPUT_DEBUG" == "true" ]]; then
     set -o xtrace
 fi
 
-export REGISTRY=${INPUT_REGISTRY:-"docker.io"}
+export REGISTRY='harbor.obmondo.com'
 export IMAGE=${INPUT_IMAGE}
 export BRANCH=$(echo ${GITHUB_REF} | sed -E "s/refs\/(heads|tags)\///g" | sed -e "s/\//-/g")
 export TAG=${INPUT_TAG:-$([ "$BRANCH" == "master" ] && echo latest || echo $BRANCH)}
@@ -71,7 +71,7 @@ if [ ! -z $INPUT_SKIP_UNCHANGED_DIGEST ]; then
 else
     export DESTINATION="--destination $IMAGE"
     if [ ! -z $IMAGE_LATEST ]; then
-        export DESTINATION="$DESTINATION --destination $IMAGE_LATEST"  
+        export DESTINATION="$DESTINATION --destination $IMAGE_LATEST"
     fi
 fi
 
@@ -105,13 +105,13 @@ if [ ! -z $INPUT_SKIP_UNCHANGED_DIGEST ]; then
     fi
 
     echo "Pushing image..."
-    
+
     /kaniko/crane push image.tar $IMAGE
 
     if [ ! -z $IMAGE_LATEST ]; then
         echo "Tagging latest..."
-        /kaniko/crane tag $IMAGE latest  
+        /kaniko/crane tag $IMAGE latest
     fi
- 
+
     echo "Done 🎉️"
 fi
